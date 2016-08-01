@@ -29,6 +29,7 @@
     "bluebird": "^3.3.4",
     "bunyan": "^1.2.0",
     "commander": "^2.4.0",
+    "dotenv": "^2.0.0",
     "elasticsearch": "^11.0.0",
     "event-emitter": "^0.3.1",
     "http-aws-es": "^1.1.3",

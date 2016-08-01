@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+// Try to load env variables from .env file
+require('dotenv').config();
+
 var cli           = require('commander'),
     elasticsearch = require('elasticsearch'),
     cluster       = require('cluster'),
