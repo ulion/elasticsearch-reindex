@@ -29,9 +29,9 @@ cli
 .option('-p, --parent [value]', 'if set, uses this field as parent field', '')
 .option('-m, --promise [value]', 'if set indexes expecting promises, default: false', false)
 .option('-z, --compress [value]', 'if set, requests compression of data in transit', false)
-.option('-a, --access_key [value]', 'AWS access key', false)
-.option('-k, --secret_key [value]', 'AWS secret ket', false)
-.option('-e, --region [value]', 'AWS region', false)
+.option('-a, --access_key [value]', 'AWS access key', process.env.AWS_ACCESS_KEY_ID || false)
+.option('-k, --secret_key [value]', 'AWS secret ket', process.env.AWS_SECRET_ACCESS_KEY || false)
+.option('-e, --region [value]', 'AWS region', process.env.AWS_REGION || false)
 .parse(process.argv);
 
 for (var key in cli) {
