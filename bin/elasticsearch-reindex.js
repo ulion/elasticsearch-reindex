@@ -22,7 +22,7 @@ cli
 .option('-b, --bulk [value]', 'bulk size for a thread', 100)
 .option('-q, --query_size [value]', 'query size for scroll', 100)
 .option('-s, --scroll [value]', 'default 1m', '1m')
-.option('-i, --sniff_cluster [value]', 'sniff the rest of the cluster upon initial connection and connection errors', true)
+.option('-i, --sniff_cluster [value]', 'sniff the rest of the cluster upon initial connection and connection errors', false)
 .option('-o, --request_timeout [value]', 'default 60000', 60000)
 .option('-l, --log_path [value]', 'default ./reindex.log', './reindex.log')
 .option('-r, --trace', 'default false', false)
