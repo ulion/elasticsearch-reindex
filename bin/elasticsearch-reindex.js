@@ -210,11 +210,15 @@ if (cluster.isMaster) {
   var scan_options = {
         index       : from.index,
         type        : from.type,
-        search_type : 'scan',
+        //search_type : 'scan',
         scroll      : cli.scroll,
         from        : cli.offset,
         size        : cli.query_size,
-        body        : {}
+        body        : {
+          sort: [
+            '_doc'
+          ]
+        }
       };
 
   if (range) {
