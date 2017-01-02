@@ -212,7 +212,6 @@ if (cluster.isMaster) {
         type        : from.type,
         //search_type : 'scan',
         scroll      : cli.scroll,
-        from        : cli.offset,
         size        : cli.query_size,
         body        : {
           sort: [
@@ -271,6 +270,9 @@ if (cluster.isMaster) {
       docs = docs.slice(0, total - processed_total);
       processed_total = total;
     }
+    if (processed_total <= cli.offset) {
+      return next();
+    }
     reindexer[reindexMethod](docs, {
       concurrency : cli.concurrency,
       bulk        : cli.bulk,
@@ -284,6 +286,10 @@ if (cluster.isMaster) {
         logger.fatal(err);
         return console.log("\nReindex error: " + err);
       }
+      next();
+    });
+
+    function next() {
       if (processed_total < total) {
         from.client.scroll({
           body : res._scroll_id,
@@ -297,6 +303,6 @@ if (cluster.isMaster) {
         logger.info(msg);
         process.exit();
       }
-    });
+    }
   });
 }
