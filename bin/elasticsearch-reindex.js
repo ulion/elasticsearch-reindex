@@ -271,6 +271,7 @@ if (cluster.isMaster) {
       processed_total = total;
     }
     if (processed_total <= cli.offset) {
+      process.send({success: docs.length});
       return next();
     }
     reindexer[reindexMethod](docs, {
